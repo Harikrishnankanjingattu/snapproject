@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapProjects - Academic Project Showcase</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filters {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .projects-section {
+            padding: 2rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-category.software {
+            background: var(--primary-color);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>SnapProjects</h1>
+                <p>Discover and Download Premium Academic Projects</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="hardware-count">0</div>
+                        <div class="stat-label">Hardware Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="software-count">0</div>
+                        <div class="stat-label">Software Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="filters">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="hardware">Hardware</button>
+                    <button class="filter-btn" data-filter="software">Software</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="container">
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SnapProjects. All rights reserved. | Quality Academic Projects</p>
+        </div>
+    </footer>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                id: 1,
+                title: "Smart Home Automation System",
+                category: "hardware",
+                description: "Complete IoT-based home automation system with mobile app control, voice commands, and energy monitoring. Features include smart lighting, temperature control, security system integration, and real-time monitoring dashboard.",
+                technologies: ["Arduino", "ESP32", "React Native", "Firebase", "Sensors", "Relay Modules"],
+                price: 15000,
+                image: "Smart Home System"
+            },
+            {
+                id: 2,
+                title: "E-Learning Management System",
+                category: "software",
+                description: "Comprehensive learning management system with student portal, instructor dashboard, assignment management, video conferencing integration, and progress tracking. Includes payment gateway and certificate generation.",
+                technologies: ["React.js", "Node.js", "MongoDB", "Express", "Socket.io", "Stripe API"],
+                price: 12000,
+                image: "E-Learning Platform"
+            },
+            {
+                id: 3,
+                title: "Robotic Arm with Computer Vision",
+                category: "hardware",
+                description: "6-DOF robotic arm controlled by computer vision algorithms for object detection and manipulation. Includes machine learning-based object recognition and autonomous pick-and-place operations.",
+                technologies: ["Python", "OpenCV", "TensorFlow", "Arduino", "Servo Motors", "Raspberry Pi"],
+                price: 25000,
+                image: "Robotic Arm System"
+            },
+            {
+                id: 4,
+                title: "Blockchain Voting System",
+                category: "software",
+                description: "Secure digital voting platform using blockchain technology ensuring transparency and immutability. Features voter authentication, encrypted ballot casting, and real-time result compilation with audit trails.",
+                technologies: ["Solidity", "Web3.js", "React", "Ethereum", "MetaMask", "IPFS"],
+                price: 18000,
+                image: "Blockchain Voting"
+            },
+            {
+                id: 5,
+                title: "Solar Panel Monitoring System",
+                category: "hardware",
+                description: "Real-time solar panel performance monitoring system with weather station integration, efficiency analysis, and maintenance alerts. Includes web dashboard and mobile notifications.",
+                technologies: ["IoT Sensors", "Arduino", "LoRaWAN", "PHP", "MySQL", "Charts.js"],
+                price: 20000,
+                image: "Solar Monitoring"
+            },
+            {
+                id: 6,
+                title: "AI-Powered Chatbot Platform",
+                category: "software",
+                description: "Intelligent chatbot platform with natural language processing, machine learning capabilities, and multi-platform integration. Supports voice interaction and sentiment analysis.",
+                technologies: ["Python", "NLP", "TensorFlow", "Flask", "PostgreSQL", "WebRTC"],
+                price: 16000,
+                image: "AI Chatbot Platform"
+            },
+            {
+                id: 7,
+                title: "Drone-Based Surveillance System",
+                category: "hardware",
+                description: "Autonomous drone system for surveillance and monitoring with real-time video streaming, GPS tracking, and automated patrol routes. Includes ground control station software.",
+                technologies: ["Drone Hardware", "Computer Vision", "GPS Module", "Live Streaming", "Python", "OpenCV"],
+                price: 35000,
+                image: "Surveillance Drone"
+            },
+            {
+                id: 8,
+                title: "Hospital Management System",
+                category: "software",
+                description: "Complete hospital management solution with patient records, appointment scheduling, inventory management, billing system, and doctor-patient portal. HIPAA compliant with role-based access control.",
+                technologies: ["Angular", "Spring Boot", "PostgreSQL", "Docker", "JWT", "PDF Generation"],
+                price: 22000,
+                image: "Hospital Management"
+            }
+        ];
+
+        // DOM elements
+        const projectsGrid = document.getElementById('projects-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const hardwareCount = document.getElementById('hardware-count');
+        const softwareCount = document.getElementById('software-count');
+
+        // Initialize the application
+        function init() {
+            updateCounts();
+            renderProjects(projects);
+            setupEventListeners();
+        }
+
+        // Update project counts
+        function updateCounts() {
+            const hardware = projects.filter(project => project.category === 'hardware').length;
+            const software = projects.filter(project => project.category === 'software').length;
+            
+            hardwareCount.textContent = hardware;
+            softwareCount.textContent = software;
+        }
+
+        // Render projects
+        function renderProjects(projectsToRender) {
+            projectsGrid.innerHTML = '';
+            
+            projectsToRender.forEach(project => {
+                const projectCard = createProjectCard(project);
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Create project card
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card fade-in';
+            card.innerHTML = `
+                <div class="project-image">${project.image}</div>
+                <div class="project-content">
+                    <h3 class="project-title">${project.title}</h3>
+                    <span class="project-category ${project.category}">${project.category.toUpperCase()}</span>
+                    <p class="project-description">${project.description}</p>
+                    <div class="tech-stack">
+                        <h4>Technologies Used:</h4>
+                        <div class="tech-list">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="project-price">₹${project.price.toLocaleString()}</div>
+                    <div class="project-actions">
+                        <button class="btn btn-primary" onclick="downloadPDF(${project.id})">
+                            📄 Download PDF
+                        </button>
+                        <a href="#" class="btn btn-secondary" onclick="bookViaWhatsApp('${project.title}', ${project.price})">
+                            💬 Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter projects
+                    const filter = this.getAttribute('data-filter');
+                    filterProjects(filter);
+                });
+            });
+        }
+
+        // Filter projects
+        function filterProjects(filter) {
+            let filteredProjects;
+            
+            if (filter === 'all') {
+                filteredProjects = projects;
+            } else {
+                filteredProjects = projects.filter(project => project.category === filter);
+            }
+            
+            renderProjects(filteredProjects);
+        }
+
+        // Generate and download PDF
+        function downloadPDF(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            // Create PDF content
+            const pdfContent = `
+SnapProjects - Project Details
+=====================================
+
+Project Title: ${project.title}
+Category: ${project.category.toUpperCase()}
+Price: ₹${project.price.toLocaleString()}
+
+Description:
+${project.description}
+
+Technologies Used:
+${project.technologies.map(tech => `• ${tech}`).join('\n')}
+
+=====================================
+Contact us for more details and source code access.
+Email: contact@snapprojects.com
+WhatsApp: +91-9876543210
+
+© 2024 SnapProjects - Quality Academic Projects
+            `.trim();
+
+            // Create blob and download
+            const blob = new Blob([pdfContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${project.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_details.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Book via WhatsApp
+        function bookViaWhatsApp(projectTitle, price) {
+            const message = `Hi, I'm interested in the project "${projectTitle}" priced at ₹${price.toLocaleString()}. Please share more details.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/919876543210?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
