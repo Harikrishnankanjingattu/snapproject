@@ -352,79 +352,17 @@
     <script>
         // Project data
         const projects = [
-            {
-                id: 1,
-                title: "Smart Home Automation System",
-                category: "hardware",
-                description: "Complete IoT-based home automation system with mobile app control, voice commands, and energy monitoring. Features include smart lighting, temperature control, security system integration, and real-time monitoring dashboard.",
-                technologies: ["Arduino", "ESP32", "React Native", "Firebase", "Sensors", "Relay Modules"],
-                price: 15000,
-                image: "Smart Home System"
-            },
-            {
-                id: 2,
-                title: "E-Learning Management System",
-                category: "software",
-                description: "Comprehensive learning management system with student portal, instructor dashboard, assignment management, video conferencing integration, and progress tracking. Includes payment gateway and certificate generation.",
-                technologies: ["React.js", "Node.js", "MongoDB", "Express", "Socket.io", "Stripe API"],
-                price: 12000,
-                image: "E-Learning Platform"
-            },
-            {
-                id: 3,
-                title: "Robotic Arm with Computer Vision",
-                category: "hardware",
-                description: "6-DOF robotic arm controlled by computer vision algorithms for object detection and manipulation. Includes machine learning-based object recognition and autonomous pick-and-place operations.",
-                technologies: ["Python", "OpenCV", "TensorFlow", "Arduino", "Servo Motors", "Raspberry Pi"],
-                price: 25000,
-                image: "Robotic Arm System"
-            },
-            {
-                id: 4,
-                title: "Blockchain Voting System",
-                category: "software",
-                description: "Secure digital voting platform using blockchain technology ensuring transparency and immutability. Features voter authentication, encrypted ballot casting, and real-time result compilation with audit trails.",
-                technologies: ["Solidity", "Web3.js", "React", "Ethereum", "MetaMask", "IPFS"],
-                price: 18000,
-                image: "Blockchain Voting"
-            },
-            {
-                id: 5,
-                title: "Solar Panel Monitoring System",
-                category: "hardware",
-                description: "Real-time solar panel performance monitoring system with weather station integration, efficiency analysis, and maintenance alerts. Includes web dashboard and mobile notifications.",
-                technologies: ["IoT Sensors", "Arduino", "LoRaWAN", "PHP", "MySQL", "Charts.js"],
-                price: 20000,
-                image: "Solar Monitoring"
-            },
-            {
-                id: 6,
-                title: "AI-Powered Chatbot Platform",
-                category: "software",
-                description: "Intelligent chatbot platform with natural language processing, machine learning capabilities, and multi-platform integration. Supports voice interaction and sentiment analysis.",
-                technologies: ["Python", "NLP", "TensorFlow", "Flask", "PostgreSQL", "WebRTC"],
-                price: 16000,
-                image: "AI Chatbot Platform"
-            },
-            {
-                id: 7,
-                title: "Drone-Based Surveillance System",
-                category: "hardware",
-                description: "Autonomous drone system for surveillance and monitoring with real-time video streaming, GPS tracking, and automated patrol routes. Includes ground control station software.",
-                technologies: ["Drone Hardware", "Computer Vision", "GPS Module", "Live Streaming", "Python", "OpenCV"],
-                price: 35000,
-                image: "Surveillance Drone"
-            },
-            {
-                id: 8,
-                title: "Hospital Management System",
-                category: "software",
-                description: "Complete hospital management solution with patient records, appointment scheduling, inventory management, billing system, and doctor-patient portal. HIPAA compliant with role-based access control.",
-                technologies: ["Angular", "Spring Boot", "PostgreSQL", "Docker", "JWT", "PDF Generation"],
-                price: 22000,
-                image: "Hospital Management"
-            }
-        ];
+    {
+        id: 1,
+        title: "QubPay – Dynamic UPI QR Payment Box",
+        category: "software",
+        description: "QubPay is a smart, dynamic UPI QR code generator app. It allows vendors to enter the transaction amount, generates a UPI QR code based on that, displays it with a startup logo, and optionally plays a sound upon successful payment. Includes a manual button to check daily total earnings.",
+        technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
+        price: 5000,
+        video: "qubay.mp4"
+    }
+];
+
 
         // DOM elements
         const projectsGrid = document.getElementById('projects-grid');
