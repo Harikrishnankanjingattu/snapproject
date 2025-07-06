@@ -43,17 +43,39 @@
             color: white;
             padding: 2rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .header-content h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .header-content p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 400;
         }
 
         .stats {
@@ -64,25 +86,34 @@
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
             text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: block;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-top: 0.25rem;
         }
 
         .filters {
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
         }
 
@@ -94,108 +125,141 @@
         }
 
         .filter-btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 2rem;
             border: 2px solid var(--primary-color);
             background: white;
             color: var(--primary-color);
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px -8px var(--primary-color);
         }
 
         .projects-section {
-            padding: 2rem 0;
+            padding: 2rem 0 4rem;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
         }
-        .project-image video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
 
         .project-card {
             background: var(--bg-white);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border-color);
+            position: relative;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image .placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
 
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
+
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .project-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
+            line-height: 1.3;
         }
 
         .project-category {
             display: inline-block;
             background: var(--secondary-color);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .project-category.software {
             background: var(--primary-color);
         }
 
+        .project-category.hardware {
+            background: var(--accent-color);
+        }
+
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .tech-stack {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .tech-stack h4 {
             font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
@@ -208,17 +272,18 @@
         .tech-tag {
             background: var(--bg-light);
             color: var(--text-secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
+            padding: 0.4rem 0.875rem;
+            border-radius: 15px;
             font-size: 0.8rem;
             border: 1px solid var(--border-color);
+            font-weight: 500;
         }
 
         .project-price {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: var(--secondary-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
 
         .project-actions {
@@ -228,18 +293,19 @@
 
         .btn {
             flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1.25rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .btn-primary {
@@ -250,6 +316,7 @@
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px -6px var(--primary-color);
         }
 
         .btn-secondary {
@@ -260,19 +327,25 @@
         .btn-secondary:hover {
             background: #059669;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px -6px var(--secondary-color);
         }
 
         footer {
             background: var(--text-primary);
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             margin-top: 4rem;
         }
 
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .header-content h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .stats {
@@ -281,8 +354,13 @@
                 align-items: center;
             }
 
+            .stat-card {
+                min-width: 200px;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .project-actions {
@@ -290,22 +368,67 @@
             }
 
             .filter-buttons {
-                flex-direction: column;
-                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .filter-btn {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
             }
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .header-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+        }
+
+        /* Animations */
         .hidden {
             display: none;
         }
 
         .fade-in {
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeIn 0.6s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Video specific styles */
+        video::-webkit-media-controls-panel {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        video::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-volume-slider,
+        video::-webkit-media-controls-timeline {
+            filter: brightness(1.2);
         }
     </style>
 </head>
@@ -356,21 +479,47 @@
     </footer>
 
     <script>
-        // Project data
-    const projects = [
-    {
-        id: 1,
-        title: "QubPay – Dynamic UPI QR Payment App",
-        category: "software",
-        description: "QubPay is a lightweight and user-friendly desktop payment application designed to help vendors and small businesses generate dynamic UPI QR codes on the fly. With a clean graphical interface, users can enter any transaction amount, and QubPay instantly generates a UPI-compatible QR code reflecting that amount. The app displays a splash logo at launch, allows manual earnings tracking, and supports audio feedback when payments are confirmed. Built using Python and Tkinter, it works offline and ...
-        technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
-        price: 5000,
-        video: "qubay.mp4",
-        poster: "qubpay-poster.png" // Optional: thumbnail preview image for video
-    }
-];
-
-
+        // Enhanced project data with multiple projects for demonstration
+        const projects = [
+            {
+                id: 1,
+                title: "QubPay – Dynamic UPI QR Payment App",
+                category: "software",
+                description: "QubPay is a lightweight and user-friendly desktop payment application designed to help vendors and small businesses generate dynamic UPI QR codes on the fly. With a clean graphical interface, users can enter any transaction amount, and QubPay instantly generates a UPI-compatible QR code reflecting that amount. The app displays a splash logo at launch, allows manual earnings tracking, and supports audio feedback when payments are confirmed. Built using Python and Tkinter, it works offline and provides seamless payment solutions.",
+                technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
+                price: 5000,
+                video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+                poster: "https://via.placeholder.com/400x200/2563eb/ffffff?text=QubPay+Demo"
+            },
+            {
+                id: 2,
+                title: "Smart Home Automation System",
+                category: "hardware",
+                description: "An IoT-based smart home automation system that allows users to control lights, fans, and appliances remotely via a mobile app. Features include voice control, scheduling, energy monitoring, and security alerts. The system uses ESP32 microcontroller with various sensors for temperature, humidity, and motion detection.",
+                technologies: ["ESP32", "Arduino", "IoT", "Firebase", "Flutter", "Sensors"],
+                price: 7500,
+                video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
+                poster: "https://via.placeholder.com/400x200/10b981/ffffff?text=Smart+Home"
+            },
+            {
+                id: 3,
+                title: "AI-Powered Chatbot System",
+                category: "software",
+                description: "An intelligent chatbot system built with natural language processing capabilities. It can handle customer queries, provide product recommendations, and integrate with existing CRM systems. Features include sentiment analysis, multi-language support, and machine learning-based response improvement.",
+                technologies: ["Python", "TensorFlow", "NLTK", "Flask", "React", "MongoDB"],
+                price: 6000,
+                image: "https://via.placeholder.com/400x200/f59e0b/ffffff?text=AI+Chatbot"
+            },
+            {
+                id: 4,
+                title: "Wireless Sensor Network for Agriculture",
+                category: "hardware",
+                description: "A comprehensive wireless sensor network designed for precision agriculture. Monitors soil moisture, temperature, humidity, and light levels across large farming areas. Includes solar-powered nodes, long-range communication, and a web dashboard for data visualization and automated irrigation control.",
+                technologies: ["LoRaWAN", "Arduino", "Solar Power", "Sensors", "Web Dashboard", "MySQL"],
+                price: 8500,
+                image: "https://via.placeholder.com/400x200/059669/ffffff?text=Agri+Sensors"
+            }
+        ];
 
         // DOM elements
         const projectsGrid = document.getElementById('projects-grid');
@@ -383,6 +532,30 @@
             updateCounts();
             renderProjects(projects);
             setupEventListeners();
+            animateCounters();
+        }
+
+        // Animate counters
+        function animateCounters() {
+            const hardware = projects.filter(project => project.category === 'hardware').length;
+            const software = projects.filter(project => project.category === 'software').length;
+            
+            animateNumber(hardwareCount, hardware);
+            animateNumber(softwareCount, software);
+        }
+
+        // Animate number counter
+        function animateNumber(element, target) {
+            let current = 0;
+            const increment = target / 20;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 50);
         }
 
         // Update project counts
@@ -394,35 +567,51 @@
             softwareCount.textContent = software;
         }
 
-        // Render projects
+        // Render projects with enhanced animations
         function renderProjects(projectsToRender) {
             projectsGrid.innerHTML = '';
             
-            projectsToRender.forEach(project => {
+            projectsToRender.forEach((project, index) => {
                 const projectCard = createProjectCard(project);
+                projectCard.style.animationDelay = `${index * 0.1}s`;
                 projectsGrid.appendChild(projectCard);
             });
         }
 
-        // Create project card
+        // Create enhanced project card
         function createProjectCard(project) {
             const card = document.createElement('div');
             card.className = 'project-card fade-in';
+            
+            let mediaContent = '';
+            if (project.video) {
+                mediaContent = `
+                    <video 
+                        width="100%" 
+                        height="220" 
+                        controls 
+                        preload="metadata"
+                        poster="${project.poster || ''}"
+                        onloadstart="this.volume=0.5"
+                    >
+                        <source src="${project.video}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay"></div>
+                `;
+            } else if (project.image) {
+                mediaContent = `<img src="${project.image}" alt="${project.title}" loading="lazy">`;
+            } else {
+                mediaContent = `<div class="placeholder">🚀 ${project.title}</div>`;
+            }
+
             card.innerHTML = `
                 <div class="project-image">
-    ${project.video ? `
-        <video width="100%" height="200" controls poster="${project.poster || ''}">
-            <source src="${project.video}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    ` : `
-        ${project.image}
-    `}
-</div>
-
+                    ${mediaContent}
+                </div>
                 <div class="project-content">
                     <h3 class="project-title">${project.title}</h3>
-                    <span class="project-category ${project.category}">${project.category.toUpperCase()}</span>
+                    <span class="project-category ${project.category}">${project.category}</span>
                     <p class="project-description">${project.description}</p>
                     <div class="tech-stack">
                         <h4>Technologies Used:</h4>
@@ -435,32 +624,52 @@
                         <button class="btn btn-primary" onclick="downloadPDF(${project.id})">
                             📄 Download PDF
                         </button>
-                        <a href="#" class="btn btn-secondary" onclick="bookViaWhatsApp('${project.title}', ${project.price})">
+                        <button class="btn btn-secondary" onclick="bookViaWhatsApp('${project.title.replace(/'/g, "\\'")}', ${project.price})">
                             💬 Book via WhatsApp
-                        </a>
+                        </button>
                     </div>
                 </div>
             `;
             return card;
         }
 
-        // Setup event listeners
+        // Setup enhanced event listeners
         function setupEventListeners() {
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // Add loading state
+                    projectsGrid.classList.add('loading');
+                    
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     // Add active class to clicked button
                     this.classList.add('active');
                     
-                    // Filter projects
-                    const filter = this.getAttribute('data-filter');
-                    filterProjects(filter);
+                    // Filter projects with delay for smooth animation
+                    setTimeout(() => {
+                        const filter = this.getAttribute('data-filter');
+                        filterProjects(filter);
+                        projectsGrid.classList.remove('loading');
+                    }, 150);
+                });
+            });
+
+            // Add smooth scroll for better UX
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
         }
 
-        // Filter projects
+        // Enhanced filter projects
         function filterProjects(filter) {
             let filteredProjects;
             
@@ -473,19 +682,27 @@
             renderProjects(filteredProjects);
         }
 
-        // Generate and download PDF
+        // Enhanced PDF generation
         function downloadPDF(projectId) {
             const project = projects.find(p => p.id === projectId);
             if (!project) return;
 
-            // Create PDF content
-            const pdfContent = `
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '⏳ Generating...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                // Create enhanced PDF content
+                const pdfContent = `
 SnapProjects - Project Details
 =====================================
 
 Project Title: ${project.title}
 Category: ${project.category.toUpperCase()}
 Price: ₹${project.price.toLocaleString()}
+Project ID: #SP${project.id.toString().padStart(3, '0')}
 
 Description:
 ${project.description}
@@ -493,36 +710,93 @@ ${project.description}
 Technologies Used:
 ${project.technologies.map(tech => `• ${tech}`).join('\n')}
 
+Project Features:
+• Complete source code included
+• Detailed documentation provided
+• Installation guide included
+• Technical support available
+• Commercial usage rights
+
+Contact Information:
 =====================================
-Contact us for more details and source code access.
 Email: contact@snapprojects.com
-WhatsApp: +91-9876543210
+WhatsApp: +91-9074217605
+Website: www.snapprojects.com
+
+Support:
+• 24/7 Technical Support
+• Free Updates for 6 months
+• Installation Assistance
+• Customization Available
 
 © 2024 SnapProjects - Quality Academic Projects
-            `.trim();
+All rights reserved. This document contains confidential information.
+                `.trim();
 
-            // Create blob and download
-            const blob = new Blob([pdfContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${project.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_details.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+                // Create and download blob
+                const blob = new Blob([pdfContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `SnapProjects_${project.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_details.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+
+                // Reset button
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1000);
         }
 
-        // Book via WhatsApp
+        // Enhanced WhatsApp integration
         function bookViaWhatsApp(projectTitle, price) {
-            const message = `Hi, I'm interested in the project "${projectTitle}" priced at ₹${price.toLocaleString()}. Please share more details.`;
+            const message = `🚀 Hi SnapProjects Team!
+
+I'm interested in the project: "${projectTitle}"
+💰 Price: ₹${price.toLocaleString()}
+
+Please share:
+✅ Complete project details
+✅ Source code preview
+✅ Timeline for delivery
+✅ Payment options
+
+Looking forward to your response!`;
+
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/9074217605?text=${encodedMessage}`;
+            
+            // Open in new tab
             window.open(whatsappUrl, '_blank');
+        }
+
+        // Enhanced search functionality (optional)
+        function searchProjects(query) {
+            const filteredProjects = projects.filter(project => 
+                project.title.toLowerCase().includes(query.toLowerCase()) ||
+                project.description.toLowerCase().includes(query.toLowerCase()) ||
+                project.technologies.some(tech => tech.toLowerCase().includes(query.toLowerCase()))
+            );
+            renderProjects(filteredProjects);
         }
 
         // Initialize the application when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
+
+        // Add scroll animations
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>
