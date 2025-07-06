@@ -122,6 +122,12 @@
             gap: 2rem;
             margin-top: 2rem;
         }
+        .project-image video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 
         .project-card {
             background: var(--bg-white);
@@ -351,17 +357,19 @@
 
     <script>
         // Project data
-        const projects = [
+    const projects = [
     {
         id: 1,
-        title: "QubPay – Dynamic UPI QR Payment Box",
+        title: "QubPay – Dynamic UPI QR Payment App",
         category: "software",
-        description: "QubPay is a smart, dynamic UPI QR code generator app. It allows vendors to enter the transaction amount, generates a UPI QR code based on that, displays it with a startup logo, and optionally plays a sound upon successful payment. Includes a manual button to check daily total earnings.",
+        description: "QubPay is a lightweight and user-friendly desktop payment application designed to help vendors and small businesses generate dynamic UPI QR codes on the fly. With a clean graphical interface, users can enter any transaction amount, and QubPay instantly generates a UPI-compatible QR code reflecting that amount. The app displays a splash logo at launch, allows manual earnings tracking, and supports audio feedback when payments are confirmed. Built using Python and Tkinter, it works offline and ...
         technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
         price: 5000,
-        video: "qubay.mp4"
+        video: "qubay.mp4",
+        poster: "qubpay-poster.png" // Optional: thumbnail preview image for video
     }
 ];
+
 
 
         // DOM elements
@@ -401,7 +409,17 @@
             const card = document.createElement('div');
             card.className = 'project-card fade-in';
             card.innerHTML = `
-                <div class="project-image">${project.image}</div>
+                <div class="project-image">
+    ${project.video ? `
+        <video width="100%" height="200" controls poster="${project.poster || ''}">
+            <source src="${project.video}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    ` : `
+        ${project.image}
+    `}
+</div>
+
                 <div class="project-content">
                     <h3 class="project-title">${project.title}</h3>
                     <span class="project-category ${project.category}">${project.category.toUpperCase()}</span>
