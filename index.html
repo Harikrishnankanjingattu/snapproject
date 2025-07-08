@@ -485,7 +485,7 @@
         id: 1,
         title: "QubPay – Dynamic UPI QR Payment App",
         category: "software",
-        description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases .QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing. Key features include: 1) Real-time 250px QR codes with embedded payment details, 2) Self-contained transaction storage without Excel/files, and 3) Offline functionality for secure payments. The app targets small businesses and freelancers needing quick payment solutions, using only tkinter, Pillow and qrcode libraries for lightweight (<50MB RAM) cross-platform performance.",
+        description: "A desktop application featuring a split-panel interface for instant UPI QR generation. The left panel handles user inputs (amount/note entry) while the right panel displays scannable QR codes with payment details. Includes transaction history tracking with running totals and requires no external databases. QubPay is a Python-based UPI payment solution that simplifies digital transactions through dynamic QR generation. Its innovative split-panel design separates controls (left) from outputs (right), enabling 70% faster payments than manual UPI sharing. Key features include: 1) Real-time 250px QR codes with embedded payment details, 2) Self-contained transaction storage without Excel/files, and 3) Offline functionality for secure payments. The app targets small businesses and freelancers needing quick payment solutions, using only tkinter, Pillow and qrcode libraries for lightweight (<50MB RAM) cross-platform performance.",
         technologies: ["Python", "Tkinter", "qrcode", "Pillow", "UPI", "GUI"],
         features: [
             "Split-panel interface (30/70 width ratio)",
@@ -502,8 +502,32 @@
         },
         video: "qubpay.mp4",
         poster: "https://via.placeholder.com/400x200/2563eb/ffffff?text=QubPay+Demo"
+    },
+    {
+        id: 2,
+        title: "IoT Smart Thermostat with MQTT",
+        category: "iot",
+        description: "A Wi-Fi-enabled smart thermostat using ESP8266, DHT22, OLED, and a relay module. Users can adjust temperature thresholds via a potentiometer and monitor real-time room temperature and humidity on an OLED screen. Integrated with MQTT for data publishing and remote threshold updates through platforms like Home Assistant and Node-RED. Designed for smart homes, greenhouses, and server rooms. Relay switches based on the temperature threshold for heater or cooler control.",
+        technologies: ["ESP8266", "C++", "MQTT", "DHT22", "OLED", "Relay", "IoT"],
+        features: [
+            "Real-time temperature & humidity monitoring",
+            "OLED display with threshold control",
+            "Relay ON/OFF based on threshold",
+            "MQTT publish/subscribe (Home Assistant compatible)",
+            "Remote setpoint override via MQTT",
+            "Offline operation with local threshold"
+        ],
+        price: "Free",
+        metrics: {
+            sensor: "DHT22 (±0.5°C)",
+            relayControl: "GPIO14 (D5)",
+            mqttTopics: "iot/thermostat/data, iot/thermostat/setpoint"
+        },
+        video: "",
+        poster: "https://via.placeholder.com/400x200/22c55e/ffffff?text=IoT+Thermostat"
     }
 ];
+
         // DOM elements
         const projectsGrid = document.getElementById('projects-grid');
         const filterButtons = document.querySelectorAll('.filter-btn');
